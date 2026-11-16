@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+# Not shipped in the plugin zip (git archive / composer zip).
+/.github          export-ignore
+/tests            export-ignore
+/.editorconfig    export-ignore
+/.gitattributes   export-ignore
+/.gitignore       export-ignore
+/composer.json    export-ignore
+/composer.lock    export-ignore
+/phpcs.xml.dist   export-ignore
+/phpstan.neon.dist export-ignore
+/README.md        export-ignore

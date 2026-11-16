@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<ruleset name="Social Media Auto Post">
+	<description>WordPress Coding Standards with PSR-4 file names, checked for PHP 7.4+ compatibility.</description>
+
+	<file>.</file>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/dist/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_wp_version" value="6.4"/>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress">
+		<!-- Classes use PSR-4 file names (src/Sharing/Publisher.php). -->
+		<exclude name="WordPress.Files.FileName"/>
+		<!-- Short ternaries are fine. -->
+		<exclude name="Universal.Operators.DisallowShortTernary"/>
+		<!-- Docblocks use PHPStan generics such as list<string> for array parameters. -->
+		<exclude name="Squiz.Commenting.FunctionComment.IncorrectTypeHint"/>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="social-media-auto-post"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="a4smap"/>
+				<element value="Advert4\SocialMediaAutoPost"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Templates receive their variables from View::render() inside a closure, not as globals. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<exclude-pattern>/views/*</exclude-pattern>
+	</rule>
+</ruleset>

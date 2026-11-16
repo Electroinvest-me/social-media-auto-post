@@ -1,0 +1,374 @@
+/* Social Media Auto Post – admin styles. Uses the WordPress admin palette. */
+
+.a4smap-heading {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.a4smap-heading .dashicons {
+	width: 28px;
+	height: 28px;
+	font-size: 28px;
+	color: var(--wp-admin-theme-color, #2271b1);
+}
+
+.a4smap-lead {
+	max-width: 760px;
+	font-size: 14px;
+	color: #50575e;
+}
+
+.a4smap-tabs {
+	margin-bottom: 16px;
+}
+
+.a4smap-panel[hidden],
+.a4smap-submit[hidden] {
+	display: none;
+}
+
+.a4smap-steps {
+	max-width: 760px;
+}
+
+.a4smap-steps li {
+	margin-bottom: 4px;
+}
+
+/* Post type cards */
+
+.a4smap-card {
+	max-width: 980px;
+	margin: 16px 0;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+}
+
+.a4smap-card__header {
+	padding: 12px 16px;
+}
+
+.a4smap-card__body {
+	padding: 0 16px 8px;
+	border-top: 1px solid #f0f0f1;
+}
+
+.a4smap-card__title {
+	font-size: 14px;
+	font-weight: 600;
+	margin-right: 6px;
+}
+
+.a4smap-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.a4smap-card .form-table th {
+	width: 180px;
+}
+
+.a4smap-radio {
+	display: block;
+	margin-bottom: 6px;
+}
+
+/* Network chips */
+
+.a4smap-networks,
+.a4smap-fieldset {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.a4smap-net {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 3px 9px;
+	border: 1px solid #dcdcde;
+	border-left: 3px solid #8c8f94;
+	border-radius: 3px;
+	background: #fff;
+	font-size: 12px;
+	line-height: 1.6;
+}
+
+label.a4smap-net {
+	cursor: pointer;
+}
+
+.a4smap-net input[type="checkbox"] {
+	margin: 0;
+}
+
+.a4smap-net--facebook {
+	border-left-color: #1877f2;
+}
+
+.a4smap-net--instagram {
+	border-left-color: #e1306c;
+}
+
+.a4smap-net--tiktok {
+	border-left-color: #000;
+}
+
+.a4smap-net.is-unavailable {
+	opacity: 0.55;
+	border-style: dashed;
+}
+
+/* Profiles */
+
+.a4smap-ok {
+	color: #008a20;
+	font-weight: 600;
+}
+
+.a4smap-ok .dashicons {
+	vertical-align: text-bottom;
+}
+
+.a4smap-profile-list li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 8px;
+}
+
+/* Status badges */
+
+.a4smap-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	background: #f0f0f1;
+	color: #50575e;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.6;
+	white-space: nowrap;
+}
+
+.a4smap-badge--success {
+	background: #edfaef;
+	color: #00632b;
+}
+
+.a4smap-badge--warning {
+	background: #fcf9e8;
+	color: #8a6100;
+}
+
+.a4smap-badge--error {
+	background: #fcf0f1;
+	color: #a7262d;
+}
+
+.a4smap-badge--progress {
+	background: #f0f6fc;
+	color: #0a4b78;
+}
+
+/* Notes */
+
+.a4smap-note {
+	margin: 8px 0;
+	padding: 6px 10px;
+	border-left: 3px solid #72aee6;
+	background: #f6f7f7;
+	font-size: 12px;
+}
+
+.a4smap-note--warning {
+	border-left-color: #dba617;
+	background: #fcf9e8;
+}
+
+.a4smap-note--error {
+	border-left-color: #d63638;
+	background: #fcf0f1;
+}
+
+.a4smap-muted {
+	color: #787c82;
+	font-size: 12px;
+}
+
+/* Meta box */
+
+.a4smap-box .a4smap-label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.a4smap-box .a4smap-fieldset {
+	margin: 0 0 12px;
+	padding: 0;
+	border: 0;
+}
+
+.a4smap-box .a4smap-fieldset legend {
+	width: 100%;
+	padding: 0;
+}
+
+.a4smap-details {
+	margin: 10px 0;
+	border-top: 1px solid #f0f0f1;
+	padding-top: 8px;
+}
+
+.a4smap-details summary {
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.a4smap-details[open] summary {
+	margin-bottom: 8px;
+}
+
+.a4smap-status__line {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 0;
+}
+
+.a4smap-targets,
+.a4smap-errors {
+	margin: 6px 0;
+}
+
+.a4smap-target {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 6px;
+}
+
+.a4smap-target__error {
+	flex-basis: 100%;
+	color: #a7262d;
+	font-size: 12px;
+}
+
+.a4smap-errors li {
+	color: #a7262d;
+	font-size: 12px;
+}
+
+.a4smap-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.a4smap-share-toggle label {
+	font-weight: 600;
+}
+
+.a4smap-thumbs {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+	gap: 6px;
+	margin: 8px 0;
+}
+
+.a4smap-thumbs li {
+	margin: 0;
+}
+
+.a4smap-thumbs a,
+.a4smap-thumbs img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 3px;
+	background: #f0f0f1;
+}
+
+.a4smap-media-picker {
+	margin-bottom: 12px;
+}
+
+.a4smap-facts {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 2px 10px;
+	margin: 8px 0;
+	font-size: 12px;
+}
+
+.a4smap-facts dt {
+	color: #787c82;
+}
+
+.a4smap-facts dd {
+	margin: 0;
+}
+
+.a4smap-caption {
+	max-height: 220px;
+	overflow: auto;
+	padding: 8px;
+	border: 1px solid #f0f0f1;
+	border-radius: 3px;
+	background: #f6f7f7;
+	font-size: 12px;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+/* Activity log */
+
+.a4smap-log {
+	max-width: 1100px;
+}
+
+.a4smap-log__time {
+	width: 170px;
+	white-space: nowrap;
+}
+
+.a4smap-level {
+	display: inline-block;
+	min-width: 56px;
+	color: #787c82;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+.a4smap-log--error .a4smap-level {
+	color: #a7262d;
+}
+
+.a4smap-log--warning .a4smap-level {
+	color: #8a6100;
+}
+
+.a4smap-help-table {
+	max-width: 760px;
+}
+
+.a4smap-hooks code {
+	white-space: nowrap;
+}
+
+/* Posts list column */
+
+.column-a4smap {
+	width: 120px;
+}

@@ -1,0 +1,840 @@
+# Copyright (C) 2026 Advert4
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Social Media Auto Post 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Electroinvest-me/social-media-auto-post/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-16T15:34:55+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: social-media-auto-post\n"
+
+#. Plugin Name of the plugin
+#: src/Admin/MetaBox.php:105
+#: src/Admin/SettingsPage.php:93
+#: views/settings/page.php:35
+msgid "Social Media Auto Post"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://advert4.me"
+msgstr ""
+
+#. Description of the plugin
+msgid "Auto post your WordPress posts, images, galleries and videos to Facebook, Instagram and TikTok through Advert4 — automatically on publish or only when you choose."
+msgstr ""
+
+#. Author of the plugin
+msgid "Advert4"
+msgstr ""
+
+#. translators: 1: required PHP version, 2: current PHP version
+#: social-media-auto-post.php:36
+msgid "Social Media Auto Post needs PHP %1$s or newer. This site runs PHP %2$s."
+msgstr ""
+
+#: src/Admin/Ajax.php:161
+msgid "Only published posts of an enabled post type can be shared (password protected posts are skipped)."
+msgstr ""
+
+#: src/Admin/Ajax.php:167
+msgid "Advert4 is still publishing this post."
+msgstr ""
+
+#: src/Admin/Ajax.php:272
+msgid "You cannot edit this post."
+msgstr ""
+
+#: src/Admin/Ajax.php:285
+msgid "You cannot change these settings."
+msgstr ""
+
+#: src/Admin/Assets.php:35
+msgid "Working…"
+msgstr ""
+
+#: src/Admin/Assets.php:36
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: src/Admin/Assets.php:37
+#: views/metabox/box.php:126
+msgid "Choose images or a video"
+msgstr ""
+
+#: src/Admin/Assets.php:38
+msgid "Use these files"
+msgstr ""
+
+#: src/Admin/Assets.php:39
+msgid "Not connected in this profile"
+msgstr ""
+
+#: src/Admin/Assets.php:40
+msgid "Clear the activity log?"
+msgstr ""
+
+#: src/Admin/Notices.php:55
+msgid "Social Media Auto Post:"
+msgstr ""
+
+#: src/Admin/Notices.php:56
+msgid "connect your Advert4 workspace to start sharing posts to Facebook, Instagram and TikTok."
+msgstr ""
+
+#: src/Admin/Notices.php:58
+#: views/metabox/box.php:50
+msgid "Add the API key"
+msgstr ""
+
+#: src/Admin/PostsList.php:101
+#: src/Admin/PostsList.php:106
+msgid "Social"
+msgstr ""
+
+#: src/Admin/PostsList.php:147
+msgid "Share to social media"
+msgstr ""
+
+#. translators: %d: number of posts
+#: src/Admin/PostsList.php:206
+msgid "%d post is being shared to social media."
+msgid_plural "%d posts are being shared to social media."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of posts
+#: src/Admin/PostsList.php:213
+msgid "%d post was skipped (not published, already shared or excluded)."
+msgid_plural "%d posts were skipped (not published, already shared or excluded)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/SettingsPage.php:94
+msgid "Social Auto Post"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:139
+msgid "Settings"
+msgstr ""
+
+#: src/Api/ApiException.php:51
+msgid "Add your Advert4 API key on the Social Media Auto Post settings screen."
+msgstr ""
+
+#. translators: %s: error returned by the HTTP library
+#: src/Api/ApiException.php:61
+msgid "Could not reach Advert4: %s"
+msgstr ""
+
+#: src/Api/ApiException.php:121
+msgid "The Advert4 API key is not valid or was revoked."
+msgstr ""
+
+#: src/Api/ApiException.php:125
+msgid "This Advert4 workspace cannot use the API. Check its plan and the key permissions."
+msgstr ""
+
+#: src/Api/ApiException.php:129
+msgid "Not found in Advert4."
+msgstr ""
+
+#: src/Api/ApiException.php:133
+msgid "Too many requests to Advert4. The post will be sent again shortly."
+msgstr ""
+
+#: src/Api/ApiException.php:137
+msgid "Advert4 is temporarily unavailable."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/Api/ApiException.php:141
+msgid "Advert4 returned HTTP %d."
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:27
+msgid "Post title"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:28
+msgid "Excerpt, or the first 55 words of the content"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:29
+msgid "Full content as plain text"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:30
+msgid "Permalink"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:31
+msgid "Short link"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:32
+msgid "Site title"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:33
+msgid "Author display name"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:34
+msgid "Publish date"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:35
+msgid "Categories, comma separated"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:36
+msgid "Tags, comma separated"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:37
+msgid "Tags as #hashtags"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:38
+msgid "Terms of any taxonomy, e.g. {terms:product_cat}"
+msgstr ""
+
+#: src/Content/CaptionBuilder.php:39
+msgid "Value of a custom field, e.g. {meta:_price}"
+msgstr ""
+
+#: src/Enums/Format.php:41
+msgid "Automatic"
+msgstr ""
+
+#: src/Enums/Format.php:42
+msgid "Single image post"
+msgstr ""
+
+#: src/Enums/Format.php:43
+msgid "Gallery (carousel)"
+msgstr ""
+
+#: src/Enums/Format.php:44
+msgid "Video (Reel)"
+msgstr ""
+
+#: src/Enums/Format.php:45
+msgid "Story"
+msgstr ""
+
+#: src/Enums/Format.php:56
+msgid "Video when one is found, a gallery for several images, otherwise one image."
+msgstr ""
+
+#: src/Enums/Format.php:57
+msgid "Only the first image is sent."
+msgstr ""
+
+#: src/Enums/Format.php:58
+msgid "Every image found is sent as one carousel post."
+msgstr ""
+
+#: src/Enums/Format.php:59
+msgid "The first video is sent as a Reel / TikTok video."
+msgstr ""
+
+#: src/Enums/Format.php:60
+msgid "The first video, or the first image, is sent as a Story."
+msgstr ""
+
+#: src/Enums/ImageSource.php:43
+#: views/settings/post-type.php:137
+msgid "Featured image"
+msgstr ""
+
+#: src/Enums/ImageSource.php:44
+#: src/Enums/VideoSource.php:41
+msgid "Custom field (meta key)"
+msgstr ""
+
+#: src/Enums/ImageSource.php:45
+msgid "Galleries in the content"
+msgstr ""
+
+#: src/Enums/ImageSource.php:46
+msgid "All images in the content"
+msgstr ""
+
+#: src/Enums/ImageSource.php:47
+msgid "Images attached to the post"
+msgstr ""
+
+#: src/Enums/ImageSource.php:48
+msgid "No images (text only)"
+msgstr ""
+
+#: src/Enums/ImageSource.php:49
+msgid "Images I choose for this post"
+msgstr ""
+
+#: src/Enums/Mode.php:38
+msgid "Publish on the networks right away"
+msgstr ""
+
+#: src/Enums/Mode.php:39
+msgid "Save as a draft in Advert4 for review"
+msgstr ""
+
+#: src/Enums/Trigger.php:38
+msgid "Automatically when a post is published"
+msgstr ""
+
+#: src/Enums/Trigger.php:39
+msgid "Only when I tick \"Share\" on the post"
+msgstr ""
+
+#: src/Enums/VideoSource.php:40
+msgid "Do not look for a video"
+msgstr ""
+
+#: src/Enums/VideoSource.php:42
+msgid "First video in the content"
+msgstr ""
+
+#: src/Enums/VideoSource.php:43
+msgid "Video attached to the post"
+msgstr ""
+
+#. translators: 1: file name, 2: MIME type
+#: src/Media/MediaResolver.php:109
+msgid "%1$s was skipped: %2$s files cannot be posted (use JPEG, PNG or WebP)."
+msgstr ""
+
+#. translators: 1: file name, 2: MIME type
+#: src/Media/MediaResolver.php:118
+msgid "%1$s was skipped: %2$s videos cannot be posted (use MP4 or MOV)."
+msgstr ""
+
+#. translators: 1: number of images found, 2: maximum number of images
+#: src/Media/MediaResolver.php:126
+msgid "%1$d images were found; only the first %2$d are sent."
+msgstr ""
+
+#: src/Settings/Settings.php:219
+msgid "Full size (recommended)"
+msgstr ""
+
+#: src/Settings/Settings.php:220
+msgid "Original upload (before WordPress scaled it down)"
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:93
+msgid "Choose the Advert4 profile for this post type in Social Media Auto Post settings."
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:162
+msgid "No video was found for this post."
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:173
+msgid "A Story needs an image or a video, and none was found."
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:182
+msgid "No images were found for the gallery."
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:188
+msgid "Only one image was found, so it is posted as a single image."
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:197
+msgid "No image was found for this post."
+msgstr ""
+
+#: src/Sharing/PayloadBuilder.php:214
+msgid "No image was found: the post is sent as text only, which Instagram and TikTok do not accept."
+msgstr ""
+
+#. translators: 1: format label, 2: number of media files, 3: Advert4 status
+#: src/Sharing/Publisher.php:174
+msgid "Sent to Advert4 as %1$s with %2$d media file(s). Status: %3$s."
+msgstr ""
+
+#. translators: 1: error message, 2: minutes until the next attempt
+#: src/Sharing/Publisher.php:211
+msgid "%1$s — trying again in %2$d min."
+msgstr ""
+
+#: src/Sharing/ShareState.php:318
+msgid "Not shared"
+msgstr ""
+
+#: src/Sharing/ShareState.php:319
+msgid "Queued"
+msgstr ""
+
+#: src/Sharing/ShareState.php:320
+msgid "Sending…"
+msgstr ""
+
+#: src/Sharing/ShareState.php:321
+msgid "Not sent"
+msgstr ""
+
+#: src/Sharing/ShareState.php:322
+msgid "Draft in Advert4"
+msgstr ""
+
+#: src/Sharing/ShareState.php:323
+msgid "Scheduled"
+msgstr ""
+
+#: src/Sharing/ShareState.php:324
+#: src/Sharing/ShareState.php:342
+msgid "Publishing…"
+msgstr ""
+
+#: src/Sharing/ShareState.php:325
+#: src/Sharing/ShareState.php:343
+msgid "Published"
+msgstr ""
+
+#: src/Sharing/ShareState.php:326
+msgid "Partly published"
+msgstr ""
+
+#: src/Sharing/ShareState.php:327
+#: src/Sharing/ShareState.php:344
+msgid "Failed"
+msgstr ""
+
+#: src/Sharing/ShareState.php:328
+#: src/Sharing/ShareState.php:345
+msgid "Cancelled"
+msgstr ""
+
+#: src/Sharing/ShareState.php:341
+msgid "Waiting"
+msgstr ""
+
+#: src/Sharing/StatusSync.php:75
+msgid "The post was deleted in Advert4."
+msgstr ""
+
+#. translators: %s: Advert4 status
+#: src/Sharing/StatusSync.php:136
+msgid "Advert4 status: %s."
+msgstr ""
+
+#: views/metabox/box.php:48
+msgid "Advert4 is not connected yet."
+msgstr ""
+
+#: views/metabox/box.php:76
+msgid "Share to social media when I update this post"
+msgstr ""
+
+#: views/metabox/box.php:77
+msgid "Share to social media when published"
+msgstr ""
+
+#: views/metabox/box.php:87
+msgid "Customize this post"
+msgstr ""
+
+#: views/metabox/box.php:90
+#: views/settings/post-type.php:104
+msgid "Publish as"
+msgstr ""
+
+#. translators: %s: default value from the settings
+#: views/metabox/box.php:95
+#: views/metabox/box.php:110
+#: views/metabox/box.php:147
+msgid "Default (%s)"
+msgstr ""
+
+#: views/metabox/box.php:105
+#: views/settings/post-type.php:118
+msgid "Images from"
+msgstr ""
+
+#: views/metabox/box.php:127
+msgid "Clear"
+msgstr ""
+
+#: views/metabox/box.php:131
+#: views/metabox/preview.php:27
+#: views/settings/post-type.php:89
+msgid "Networks"
+msgstr ""
+
+#: views/metabox/box.php:142
+#: views/metabox/preview.php:31
+#: views/settings/post-type.php:192
+msgid "In Advert4"
+msgstr ""
+
+#: views/metabox/box.php:157
+#: views/settings/post-type.php:180
+msgid "Caption"
+msgstr ""
+
+#: views/metabox/box.php:159
+msgid "Empty uses the template from the settings. Placeholders such as {title} and {url} work here too."
+msgstr ""
+
+#: views/metabox/box.php:164
+msgid "Preview"
+msgstr ""
+
+#: views/metabox/box.php:168
+msgid "Based on the last saved version of the post."
+msgstr ""
+
+#: views/metabox/preview.php:25
+msgid "Format"
+msgstr ""
+
+#: views/metabox/preview.php:28
+msgid "Every account in the profile"
+msgstr ""
+
+#: views/metabox/preview.php:29
+msgid "Profile"
+msgstr ""
+
+#: views/metabox/status.php:20
+msgid "Share again"
+msgstr ""
+
+#: views/metabox/status.php:22
+msgid "Try again"
+msgstr ""
+
+#: views/metabox/status.php:24
+msgid "Share now"
+msgstr ""
+
+#. translators: %s: human readable time difference, e.g. "5 mins"
+#: views/metabox/status.php:34
+msgid "%s ago"
+msgstr ""
+
+#: views/metabox/status.php:59
+msgid "View"
+msgstr ""
+
+#: views/metabox/status.php:75
+msgid "Refresh status"
+msgstr ""
+
+#: views/metabox/status.php:79
+msgid "Nothing is sent before the post is published."
+msgstr ""
+
+#: views/settings/log.php:16
+msgid "Nothing has been shared yet. Sent posts, retries and errors appear here."
+msgstr ""
+
+#: views/settings/log.php:19
+msgid "Clear log"
+msgstr ""
+
+#: views/settings/log.php:24
+msgid "When"
+msgstr ""
+
+#: views/settings/log.php:25
+msgid "Post"
+msgstr ""
+
+#: views/settings/log.php:26
+msgid "Message"
+msgstr ""
+
+#: views/settings/page.php:25
+msgid "Connection"
+msgstr ""
+
+#: views/settings/page.php:26
+msgid "Post types"
+msgstr ""
+
+#: views/settings/page.php:27
+#: views/settings/page.php:149
+msgid "Advanced"
+msgstr ""
+
+#: views/settings/page.php:28
+#: views/settings/page.php:211
+msgid "Activity"
+msgstr ""
+
+#: views/settings/page.php:29
+msgid "Help"
+msgstr ""
+
+#: views/settings/page.php:38
+msgid "Share your posts, images, galleries and videos to Facebook, Instagram and TikTok through Advert4 — automatically when you publish, or only when you choose."
+msgstr ""
+
+#: views/settings/page.php:46
+msgid "This site does not look reachable from the internet (local or private address). Advert4 downloads the images and videos from your site, so publishing will only work once the site has a public URL."
+msgstr ""
+
+#: views/settings/page.php:51
+msgid "Settings sections"
+msgstr ""
+
+#: views/settings/page.php:61
+msgid "Connect Advert4"
+msgstr ""
+
+#. translators: %s: link to advert4.me
+#: views/settings/page.php:67
+msgid "Sign in to %s and connect your Facebook Page, Instagram and TikTok accounts to a profile."
+msgstr ""
+
+#: views/settings/page.php:72
+msgid "Open \"API\" in Advert4 and create an API key for this site."
+msgstr ""
+
+#: views/settings/page.php:73
+msgid "Paste the key below, save, and choose what each post type shares."
+msgstr ""
+
+#: views/settings/page.php:78
+msgid "API key"
+msgstr ""
+
+#: views/settings/page.php:81
+msgid "is defined in wp-config.php and is used."
+msgstr ""
+
+#. translators: %s: last characters of the saved key
+#: views/settings/page.php:91
+msgid "Saved key ending in …%s — leave empty to keep it"
+msgstr ""
+
+#. translators: %s: last characters of the saved key
+#: views/settings/page.php:91
+msgid "Paste your Advert4 API key"
+msgstr ""
+
+#: views/settings/page.php:97
+msgid "Remove the saved key"
+msgstr ""
+
+#: views/settings/page.php:101
+msgid "The key belongs to one Advert4 workspace. You can also define it in wp-config.php as A4SMAP_API_KEY."
+msgstr ""
+
+#: views/settings/page.php:106
+msgid "Profiles"
+msgstr ""
+
+#: views/settings/page.php:110
+msgid "Test connection and reload profiles"
+msgstr ""
+
+#: views/settings/page.php:119
+msgid "Save your API key first."
+msgstr ""
+
+#: views/settings/page.php:128
+msgid "What to share"
+msgstr ""
+
+#: views/settings/page.php:130
+msgid "Turn on the post types you want to share and choose the profile, networks, format, media and caption for each. Every post can override these defaults in the \"Social Media Auto Post\" box of the editor."
+msgstr ""
+
+#: views/settings/page.php:152
+msgid "Image size"
+msgstr ""
+
+#: views/settings/page.php:159
+msgid "Size of media library images that is sent. URLs from custom fields are sent as they are."
+msgstr ""
+
+#: views/settings/page.php:163
+msgid "Protected posts"
+msgstr ""
+
+#: views/settings/page.php:167
+msgid "Never share password protected posts"
+msgstr ""
+
+#: views/settings/page.php:172
+msgid "Request timeout"
+msgstr ""
+
+#: views/settings/page.php:175
+msgid "seconds"
+msgstr ""
+
+#: views/settings/page.php:176
+msgid "Advert4 downloads the media while the post is created; large videos need more time."
+msgstr ""
+
+#: views/settings/page.php:180
+msgid "API URL"
+msgstr ""
+
+#: views/settings/page.php:183
+msgid "Leave empty to use advert4.me. Only change this for a self-hosted or test installation."
+msgstr ""
+
+#: views/settings/page.php:187
+msgid "Status updates"
+msgstr ""
+
+#: views/settings/page.php:190
+msgid "Advert4 calls this signed address when a post is live, so the result per network appears in the editor. When the site is not public the plugin checks the status itself."
+msgstr ""
+
+#: views/settings/page.php:194
+msgid "Uninstall"
+msgstr ""
+
+#: views/settings/page.php:198
+msgid "Delete the settings and sharing history when the plugin is deleted"
+msgstr ""
+
+#: views/settings/page.php:216
+msgid "Caption placeholders"
+msgstr ""
+
+#: views/settings/page.php:228
+msgid "Media from custom fields"
+msgstr ""
+
+#: views/settings/page.php:229
+msgid "A custom field may hold an attachment ID, a comma separated list of IDs (like the WooCommerce gallery \"_product_image_gallery\"), a URL, a list of URLs, or an ACF image, gallery or file field. Every value is turned into the full URL of the file."
+msgstr ""
+
+#: views/settings/page.php:231
+msgid "For developers"
+msgstr ""
+
+#: views/settings/page.php:233
+msgid "filter whether a post is shared on publish."
+msgstr ""
+
+#: views/settings/page.php:234
+msgid "filter the images and video of a post."
+msgstr ""
+
+#: views/settings/page.php:235
+msgid "filter the caption."
+msgstr ""
+
+#: views/settings/page.php:236
+msgid "filter the whole Advert4 API request (e.g. to add TikTok options)."
+msgstr ""
+
+#: views/settings/page.php:237
+msgid "actions after sending and on status changes."
+msgstr ""
+
+#: views/settings/post-type.php:53
+msgid "When to share"
+msgstr ""
+
+#: views/settings/post-type.php:62
+msgid "Either way, every post has a \"Share\" checkbox and a \"Share now\" button in the editor."
+msgstr ""
+
+#: views/settings/post-type.php:68
+msgid "Advert4 profile"
+msgstr ""
+
+#. translators: %s: profile name
+#: views/settings/post-type.php:73
+msgid "The only profile (%s)"
+msgstr ""
+
+#. translators: %s: profile name
+#: views/settings/post-type.php:73
+msgid "— Choose a profile —"
+msgstr ""
+
+#: views/settings/post-type.php:82
+msgid "Profile slug"
+msgstr ""
+
+#: views/settings/post-type.php:83
+msgid "Connect Advert4 on the Connection tab to pick a profile from a list."
+msgstr ""
+
+#: views/settings/post-type.php:99
+msgid "Leave all unticked to publish to every account connected in the profile."
+msgstr ""
+
+#: views/settings/post-type.php:129
+msgid "Image custom field"
+msgstr ""
+
+#: views/settings/post-type.php:132
+msgid "Meta key that holds attachment IDs, URLs or an ACF image/gallery field."
+msgstr ""
+
+#: views/settings/post-type.php:141
+msgid "Put the featured image first"
+msgstr ""
+
+#: views/settings/post-type.php:146
+msgid "Use the featured image when no other image is found"
+msgstr ""
+
+#: views/settings/post-type.php:152
+msgid "Most images"
+msgstr ""
+
+#: views/settings/post-type.php:155
+msgid "Instagram and Facebook carousels take up to 10 images."
+msgstr ""
+
+#: views/settings/post-type.php:160
+msgid "Video from"
+msgstr ""
+
+#: views/settings/post-type.php:167
+msgid "With \"Automatic\", a video that is found is posted as a Reel instead of the images. MP4 and MOV files are supported."
+msgstr ""
+
+#: views/settings/post-type.php:172
+msgid "Video custom field"
+msgstr ""
+
+#: views/settings/post-type.php:175
+msgid "Meta key that holds a video attachment ID or URL."
+msgstr ""
+
+#: views/settings/post-type.php:184
+msgid "Placeholders:"
+msgstr ""
+
+#: views/settings/post-type.php:186
+msgid "all placeholders"
+msgstr ""
+
+#: views/settings/profiles.php:14
+msgid "Connected, but this workspace has no profiles yet. Create one in Advert4 and connect your accounts to it."
+msgstr ""
+
+#. translators: %d: number of profiles
+#: views/settings/profiles.php:23
+msgid "Connected — %d profile found."
+msgid_plural "Connected — %d profiles found."
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/settings/profiles.php:35
+msgid "no connected accounts"
+msgstr ""

@@ -1,0 +1,50 @@
+{
+    "name": "electroinvest/social-media-auto-post",
+    "description": "WordPress plugin: auto post posts, images, galleries and videos to Facebook, Instagram and TikTok through Advert4.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://advert4.me",
+    "authors": [
+        {
+            "name": "Electroinvest",
+            "homepage": "https://advert4.me"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "php-stubs/wordpress-stubs": "^6.4",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "phpstan/phpstan": "^1.12 || ^2.0",
+        "szepeviktor/phpstan-wordpress": "^1.3 || ^2.0",
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Advert4\\SocialMediaAutoPost\\": "src/"
+        }
+    },
+    "scripts": {
+        "lint": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "check": [
+            "@lint",
+            "@phpcs",
+            "@phpstan"
+        ],
+        "zip": "mkdir -p dist && git archive --format=zip --prefix=social-media-auto-post/ -o dist/social-media-auto-post.zip HEAD"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "7.4.33"
+        },
+        "sort-packages": true
+    }
+}
