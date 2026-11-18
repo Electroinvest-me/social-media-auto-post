@@ -10,12 +10,14 @@ namespace Advert4\SocialMediaAutoPost\Admin;
 use Advert4\SocialMediaAutoPost\Api\ApiException;
 use Advert4\SocialMediaAutoPost\Api\ProfileRepository;
 use Advert4\SocialMediaAutoPost\Contracts\Hookable;
+use Advert4\SocialMediaAutoPost\Settings\PostTypeConfig;
 use Advert4\SocialMediaAutoPost\Settings\Settings;
 use Advert4\SocialMediaAutoPost\Sharing\PayloadBuilder;
 use Advert4\SocialMediaAutoPost\Sharing\PostOverrides;
 use Advert4\SocialMediaAutoPost\Sharing\Publisher;
 use Advert4\SocialMediaAutoPost\Sharing\Queue;
 use Advert4\SocialMediaAutoPost\Sharing\ShareDecision;
+use Advert4\SocialMediaAutoPost\Sharing\SharePlan;
 use Advert4\SocialMediaAutoPost\Sharing\ShareState;
 use Advert4\SocialMediaAutoPost\Sharing\StatusSync;
 use Advert4\SocialMediaAutoPost\Support\Logger;
@@ -117,6 +119,7 @@ final class Ajax implements Hookable {
 		add_action( 'wp_ajax_a4smap_share', array( $this, 'share' ) );
 		add_action( 'wp_ajax_a4smap_panel', array( $this, 'panel' ) );
 		add_action( 'wp_ajax_a4smap_preview', array( $this, 'preview' ) );
+		add_action( 'wp_ajax_a4smap_settings_preview', array( $this, 'settings_preview' ) );
 	}
 
 	/**
@@ -200,9 +203,63 @@ final class Ajax implements Hookable {
 
 		$overrides = null === $input ? null : PostOverrides::from_request( $input, $this->builder->default_platforms( $config ) );
 
-		wp_send_json_success(
+		wp_send_json_success( array( 'html' => $this->preview_html( $this->builder->build( $post, $overrides ), null ) ) );
+	}
+
+	/**
+	 * Preview of the latest post of a post type with the settings currently on screen (nothing is saved).
+	 */
+	public function settings_preview(): void {
+		$this->authorize_settings();
+
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce checked in authorize_settings().
+		$post_type = isset( $_POST['post_type'] ) ? sanitize_key( wp_unslash( $_POST['post_type'] ) ) : '';
+		$submitted = isset( $_POST[ Settings::OPTION ]['post_types'][ $post_type ] ) ? wp_unslash( $_POST[ Settings::OPTION ]['post_types'][ $post_type ] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized by PostTypeConfig::sanitize().
+		// phpcs:enable
+
+		if ( '' === $post_type || ! post_type_exists( $post_type ) ) {
+			wp_send_json_error( array( 'message' => __( 'Unknown post type.', 'social-media-auto-post' ) ), 200 );
+		}
+
+		$query = array(
+			'post_type'        => $post_type,
+			'post_status'      => 'publish',
+			'has_password'     => false,
+			'numberposts'      => 1,
+			'orderby'          => 'date',
+			'order'            => 'DESC',
+			'suppress_filters' => false,
+		);
+		$posts = get_posts( $query );
+
+		if ( array() === $posts ) {
+			$posts = get_posts( array_merge( $query, array( 'post_status' => array( 'future', 'draft', 'pending', 'private' ) ) ) );
+		}
+
+		if ( array() === $posts || ! $posts[0] instanceof WP_Post ) {
+			wp_send_json_success( array( 'html' => View::capture( 'partials/preview-empty' ) ) );
+		}
+
+		$config = new PostTypeConfig( $post_type, PostTypeConfig::sanitize( $post_type, $submitted ) );
+		$plan   = $this->builder->build( $posts[0], new PostOverrides(), $config );
+
+		wp_send_json_success( array( 'html' => $this->preview_html( $plan, $posts[0] ) ) );
+	}
+
+	/**
+	 * Render the social post preview of a plan.
+	 *
+	 * @param SharePlan    $plan        Plan.
+	 * @param WP_Post|null $source_post Post the preview was built from, shown under the card.
+	 */
+	private function preview_html( SharePlan $plan, ?WP_Post $source_post ): string {
+		return View::capture(
+			'partials/social-preview',
 			array(
-				'html' => View::capture( 'metabox/preview', array( 'plan' => $this->builder->build( $post, $overrides ) ) ),
+				'plan'         => $plan,
+				'networks'     => $this->builder->plan_networks( $plan ),
+				'profile_name' => $this->builder->profile_name( $plan->profile ),
+				'source_post'  => $source_post,
 			)
 		);
 	}

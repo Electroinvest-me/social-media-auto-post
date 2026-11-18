@@ -138,6 +138,7 @@ final class MetaBox implements Hookable {
 	 */
 	public function render( WP_Post $post ): void {
 		$config = $this->settings->post_type( $post->post_type );
+		$plan   = $this->builder->build( $post );
 
 		View::render(
 			'metabox/box',
@@ -149,7 +150,9 @@ final class MetaBox implements Hookable {
 				'share_default'     => $this->decision->checkbox_default( $post ),
 				'can_share'         => $this->decision->can_share( $post ),
 				'default_platforms' => $this->builder->default_platforms( $config ),
-				'plan'              => $this->builder->build( $post ),
+				'plan'              => $plan,
+				'networks'          => $this->builder->plan_networks( $plan ),
+				'profile_name'      => $this->builder->profile_name( $plan->profile ),
 				'has_api_key'       => $this->settings->has_api_key(),
 				'nonce'             => wp_create_nonce( self::nonce_action( $post->ID ) ),
 			)

@@ -7,39 +7,51 @@
  * @var list<array<string, mixed>> $profiles
  */
 
+use Advert4\SocialMediaAutoPost\Admin\Icons;
+use Advert4\SocialMediaAutoPost\Enums\Network;
+
 defined( 'ABSPATH' ) || exit;
 ?>
 <?php if ( array() === $profiles ) : ?>
-	<div class="notice notice-warning inline">
-		<p><?php esc_html_e( 'Connected, but this workspace has no profiles yet. Create one in Advert4 and connect your accounts to it.', 'social-media-auto-post' ); ?></p>
-	</div>
+	<p class="a4smap-note a4smap-note--warning"><?php Icons::render( 'triangle-alert', 15 ); ?><span><?php esc_html_e( 'Connected, but this workspace has no profiles yet. Create one in Advert4 and connect your accounts to it.', 'social-media-auto-post' ); ?></span></p>
 <?php else : ?>
-	<p class="a4smap-ok">
-		<span class="dashicons dashicons-yes-alt" aria-hidden="true"></span>
-		<?php
-		echo esc_html(
-			sprintf(
-				/* translators: %d: number of profiles */
-				_n( 'Connected — %d profile found.', 'Connected — %d profiles found.', count( $profiles ), 'social-media-auto-post' ),
-				count( $profiles )
-			)
-		);
-		?>
+	<p class="a4smap-note a4smap-note--success">
+		<?php Icons::render( 'circle-check', 15 ); ?>
+		<span>
+			<?php
+			echo esc_html(
+				sprintf(
+					/* translators: %d: number of profiles */
+					_n( 'Connected — %d profile found.', 'Connected — %d profiles found.', count( $profiles ), 'social-media-auto-post' ),
+					count( $profiles )
+				)
+			);
+			?>
+		</span>
 	</p>
-	<ul class="a4smap-profile-list">
+	<div class="a4smap-profiles">
 		<?php foreach ( $profiles as $profile ) : ?>
-			<li>
-				<strong><?php echo esc_html( (string) $profile['name'] ); ?></strong>
-				<code><?php echo esc_html( (string) $profile['slug'] ); ?></code>
+			<div class="a4smap-profile">
+				<div class="a4smap-profile__head">
+					<span class="a4smap-avatar" aria-hidden="true"><?php echo esc_html( substr( (string) $profile['name'], 0, 1 ) ); ?></span>
+					<div>
+						<strong><?php echo esc_html( (string) $profile['name'] ); ?></strong>
+						<div class="a4smap-muted"><?php echo esc_html( (string) $profile['slug'] ); ?></div>
+					</div>
+				</div>
 				<?php if ( array() === $profile['accounts'] ) : ?>
-					<em><?php esc_html_e( 'no connected accounts', 'social-media-auto-post' ); ?></em>
+					<span class="a4smap-muted"><?php esc_html_e( 'No accounts connected yet.', 'social-media-auto-post' ); ?></span>
 				<?php endif; ?>
 				<?php foreach ( (array) $profile['accounts'] as $account ) : ?>
-					<span class="a4smap-net a4smap-net--<?php echo esc_attr( (string) $account['provider'] ); ?> <?php echo 'active' === $account['status'] ? '' : 'is-unavailable'; ?>" title="<?php echo esc_attr( (string) $account['status'] ); ?>">
-						<?php echo esc_html( ( '' !== $account['provider_label'] ? $account['provider_label'] : ucfirst( (string) $account['provider'] ) ) . ': ' . $account['name'] ); ?>
-					</span>
+					<div class="a4smap-account <?php echo 'active' === $account['status'] ? '' : 'is-inactive'; ?>">
+						<?php Icons::render_network( (string) $account['provider'], 20, true ); ?>
+						<span>
+							<strong><?php echo esc_html( (string) $account['name'] ); ?></strong>
+							<span class="a4smap-muted"><?php echo esc_html( Network::label( (string) $account['provider'] ) ); ?><?php echo 'active' === $account['status'] ? '' : ' · ' . esc_html( (string) $account['status'] ); ?></span>
+						</span>
+					</div>
 				<?php endforeach; ?>
-			</li>
+			</div>
 		<?php endforeach; ?>
-	</ul>
+	</div>
 <?php endif; ?>

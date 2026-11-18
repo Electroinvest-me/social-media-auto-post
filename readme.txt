@@ -84,9 +84,15 @@ Yes, with both, and with Quick Edit, scheduled posts and WP-CLI.
 
 == Screenshots ==
 
-1. Connection and profiles.
-2. Settings per post type: profile, networks, format, media source and caption.
-3. The editor box: share, customize, preview and the result per network.
+1. Overview: what was shared, what is in progress and what needs attention.
+2. Settings per post type with a live preview of your latest post.
+3. The editor box: share switch, preview, per-post options and the result per network.
+4. Connection to your Advert4 workspace and its profiles.
+
+== Credits ==
+
+* Interface icons from [Lucide](https://lucide.dev), ISC license.
+* Network logos from [Simple Icons](https://simpleicons.org), CC0.
 
 == Changelog ==
 

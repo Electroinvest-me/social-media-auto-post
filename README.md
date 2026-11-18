@@ -32,9 +32,9 @@ src/
   Sharing/                   PayloadBuilder, Publisher, Queue, Worker, AutoShare, StatusSync,
                              ShareDecision, ShareState, PostOverrides, SharePlan
   Rest/WebhookController.php Advert4 result webhook
-  Admin/                     SettingsPage, MetaBox, PostsList, Ajax, Notices, Assets
-views/                       PHP templates (settings, meta box)
-assets/                      admin.css, admin.js
+  Admin/                     SettingsPage, Overview, MetaBox, PostsList, Ajax, Notices, Assets, Icons
+views/                       PHP templates: settings tabs, meta box, social post preview
+assets/                      admin.css (Advert4 design tokens), admin.js, Advert4 logo
 languages/                   Translation template (.pot)
 ```
 
@@ -82,6 +82,11 @@ composer install
 composer check        # php -l, PHPCS (WordPress + PHPCompatibility 7.4+), PHPStan level 6
 composer zip          # dist/social-media-auto-post.zip from the last commit (dev files excluded)
 ```
+
+## Credits
+
+- Interface icons: [Lucide](https://lucide.dev) (ISC license)
+- Network logos: [Simple Icons](https://simpleicons.org) (CC0)
 
 ## License
 

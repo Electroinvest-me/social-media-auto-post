@@ -72,11 +72,12 @@ final class PayloadBuilder {
 	/**
 	 * Plan for a post.
 	 *
-	 * @param WP_Post            $post      Post.
-	 * @param PostOverrides|null $overrides Per-post choices; read from the post when null (pass unsaved ones for a preview).
+	 * @param WP_Post             $post      Post.
+	 * @param PostOverrides|null  $overrides Per-post choices; read from the post when null (pass unsaved ones for a preview).
+	 * @param PostTypeConfig|null $config    Post type settings; the saved ones when null (pass unsaved ones for a preview).
 	 */
-	public function build( WP_Post $post, ?PostOverrides $overrides = null ): SharePlan {
-		$config    = $this->settings->post_type( $post->post_type );
+	public function build( WP_Post $post, ?PostOverrides $overrides = null, ?PostTypeConfig $config = null ): SharePlan {
+		$config    = $config ?? $this->settings->post_type( $post->post_type );
 		$overrides = $overrides ?? PostOverrides::for_post( $post->ID );
 		$format    = $overrides->format ?? $config->format;
 		$mode      = $overrides->mode ?? $config->mode;
@@ -94,7 +95,8 @@ final class PayloadBuilder {
 		}
 
 		$template = '' !== trim( $overrides->caption ) ? $overrides->caption : $config->caption;
-		$caption  = $this->captions->build( $post, $template, $this->caption_limit( $platforms, $profile ) );
+		$limit    = $this->caption_limit( $platforms, $profile );
+		$caption  = $this->captions->build( $post, $template, $limit );
 
 		$payload = array(
 			'profile' => $profile,
@@ -121,7 +123,10 @@ final class PayloadBuilder {
 		 */
 		$payload = (array) apply_filters( 'a4smap_payload', $payload, $post );
 
-		return new SharePlan( $payload, $format, $caption, $media, $platforms, $profile, $mode, $errors, $warnings );
+		$plan                = new SharePlan( $payload, $format, $caption, $media, $platforms, $profile, $mode, $errors, $warnings );
+		$plan->caption_limit = $limit;
+
+		return $plan;
 	}
 
 	/**
@@ -131,6 +136,27 @@ final class PayloadBuilder {
 	 */
 	public function profile( PostTypeConfig $config ): string {
 		return '' !== $config->profile ? $config->profile : $this->profiles->default_reference();
+	}
+
+	/**
+	 * Networks a plan publishes to: the chosen ones, or every network connected in its profile.
+	 *
+	 * @param SharePlan $plan Plan.
+	 * @return list<string>
+	 */
+	public function plan_networks( SharePlan $plan ): array {
+		return array() !== $plan->platforms ? $plan->platforms : $this->profiles->networks( $plan->profile );
+	}
+
+	/**
+	 * Display name of a profile (the slug when it is not in the cached list).
+	 *
+	 * @param string $reference Profile slug or id.
+	 */
+	public function profile_name( string $reference ): string {
+		$profile = $this->profiles->find( $reference );
+
+		return null !== $profile && '' !== $profile['name'] ? $profile['name'] : $reference;
 	}
 
 	/**

@@ -48,7 +48,8 @@ final class CaptionBuilder {
 	 * @param int     $limit    Maximum length (0 = no limit).
 	 */
 	public function build( WP_Post $post, string $template, int $limit = 0 ): string {
-		$caption = (string) preg_replace_callback(
+		$template = str_replace( array( "\r\n", "\r" ), "\n", $template );
+		$caption  = (string) preg_replace_callback(
 			'/\{(meta|terms):([^}\s]+)\}|\{([a-z_]+)\}/',
 			function ( array $found ) use ( $post ): string {
 				return '' !== $found[1] ? $this->dynamic( $post, $found[1], $found[2] ) : $this->placeholder( $post, $found[3], $found[0] );

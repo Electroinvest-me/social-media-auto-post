@@ -8,6 +8,7 @@
 namespace Advert4\SocialMediaAutoPost\Admin;
 
 use Advert4\SocialMediaAutoPost\Contracts\Hookable;
+use Advert4\SocialMediaAutoPost\Enums\Network;
 use Advert4\SocialMediaAutoPost\Settings\Settings;
 use Advert4\SocialMediaAutoPost\Sharing\Queue;
 use Advert4\SocialMediaAutoPost\Sharing\ShareDecision;
@@ -121,20 +122,29 @@ final class PostsList implements Hookable {
 		}
 
 		$state = ShareState::for_post( $post_id );
-		$title = '' !== $state->message ? $state->message : implode(
-			', ',
-			array_map(
-				static fn ( array $target ): string => ucfirst( $target['network'] ) . ': ' . ShareState::target_label( $target['status'] ),
-				$state->targets
-			)
-		);
 
-		printf(
-			'<span class="a4smap-badge a4smap-badge--%1$s" title="%2$s">%3$s</span>',
-			esc_attr( $state->tone() ),
-			esc_attr( $title ),
-			esc_html( $state->label() )
-		);
+		echo '<span class="a4smap-column-cell">';
+
+		if ( array() !== $state->targets ) {
+			foreach ( $state->targets as $target ) {
+				printf(
+					'<span class="a4smap-net-status a4smap-net-status--%1$s" title="%2$s">',
+					esc_attr( $target['status'] ),
+					esc_attr( Network::label( $target['network'] ) . ': ' . ShareState::target_label( $target['status'] ) . ( '' !== $target['error'] ? ' — ' . $target['error'] : '' ) )
+				);
+				Icons::render_network( $target['network'], 22, true );
+				echo '</span>';
+			}
+		} else {
+			printf(
+				'<span class="a4smap-badge a4smap-badge--%1$s" title="%2$s">%3$s</span>',
+				esc_attr( $state->tone() ),
+				esc_attr( $state->message ),
+				esc_html( $state->label() )
+			);
+		}
+
+		echo '</span>';
 	}
 
 	/**

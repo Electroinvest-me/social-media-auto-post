@@ -54,16 +54,25 @@ final class SettingsPage implements Hookable {
 	private Logger $logger;
 
 	/**
+	 * Overview numbers.
+	 *
+	 * @var Overview
+	 */
+	private Overview $overview;
+
+	/**
 	 * Create the page.
 	 *
 	 * @param Settings          $settings Plugin settings.
 	 * @param ProfileRepository $profiles Advert4 profiles.
 	 * @param Logger            $logger   Activity log.
+	 * @param Overview          $overview Overview numbers.
 	 */
-	public function __construct( Settings $settings, ProfileRepository $profiles, Logger $logger ) {
+	public function __construct( Settings $settings, ProfileRepository $profiles, Logger $logger, Overview $overview ) {
 		$this->settings = $settings;
 		$this->profiles = $profiles;
 		$this->logger   = $logger;
+		$this->overview = $overview;
 	}
 
 	/**
@@ -74,6 +83,29 @@ final class SettingsPage implements Hookable {
 		add_action( 'admin_init', array( $this, 'register_setting' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( A4SMAP_FILE ), array( $this, 'action_links' ) );
+		add_filter( 'admin_body_class', array( $this, 'body_class' ) );
+	}
+
+	/**
+	 * Mark the settings screen so it can use the full-page design.
+	 *
+	 * @param string $classes Body classes.
+	 */
+	public function body_class( string $classes ): string {
+		$screen = get_current_screen();
+
+		if ( null !== $screen && '' !== $this->hook_suffix && $screen->id === $this->hook_suffix ) {
+			$classes .= ' a4smap-screen';
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Address of the Advert4 web app (derived from the API URL).
+	 */
+	private function app_url(): string {
+		return (string) preg_replace( '#/api/v\d+$#', '', $this->settings->api_url() ) . '/app';
 	}
 
 	/**
@@ -127,6 +159,7 @@ final class SettingsPage implements Hookable {
 		}
 
 		Assets::enqueue( array( 'settingsNonce' => wp_create_nonce( 'a4smap_settings' ) ) );
+		wp_enqueue_media();
 	}
 
 	/**
@@ -165,6 +198,8 @@ final class SettingsPage implements Hookable {
 			$meta_keys[ $post_type ] = $this->meta_keys( $post_type );
 		}
 
+		$stats = $this->overview->stats();
+
 		View::render(
 			'settings/page',
 			array(
@@ -174,6 +209,10 @@ final class SettingsPage implements Hookable {
 				'post_types'    => $post_types,
 				'meta_keys'     => $meta_keys,
 				'log'           => $this->logger->entries(),
+				'stats'         => $stats,
+				'recent'        => $this->overview->recent(),
+				'checklist'     => $this->overview->checklist( $profiles, $stats ),
+				'app_url'       => $this->app_url(),
 			)
 		);
 	}

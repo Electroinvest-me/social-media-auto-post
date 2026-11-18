@@ -194,7 +194,7 @@ final class PostTypeConfig {
 			return isset( $input[ $key ] ) && is_scalar( $input[ $key ] ) ? sanitize_text_field( (string) $input[ $key ] ) : '';
 		};
 
-		$caption = isset( $input['caption'] ) && is_string( $input['caption'] ) ? sanitize_textarea_field( $input['caption'] ) : self::DEFAULT_CAPTION;
+		$caption = isset( $input['caption'] ) && is_string( $input['caption'] ) ? str_replace( array( "\r\n", "\r" ), "\n", sanitize_textarea_field( $input['caption'] ) ) : self::DEFAULT_CAPTION;
 
 		return array(
 			'enabled'           => ! empty( $input['enabled'] ),

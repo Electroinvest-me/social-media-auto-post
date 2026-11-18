@@ -10,6 +10,7 @@ namespace Advert4\SocialMediaAutoPost;
 use Advert4\SocialMediaAutoPost\Admin\Ajax;
 use Advert4\SocialMediaAutoPost\Admin\MetaBox;
 use Advert4\SocialMediaAutoPost\Admin\Notices;
+use Advert4\SocialMediaAutoPost\Admin\Overview;
 use Advert4\SocialMediaAutoPost\Admin\PostsList;
 use Advert4\SocialMediaAutoPost\Admin\SettingsPage;
 use Advert4\SocialMediaAutoPost\Api\Client;
@@ -109,7 +110,7 @@ final class Plugin {
 
 		if ( is_admin() ) {
 			$this->add(
-				new SettingsPage( $settings, $profiles, $logger ),
+				new SettingsPage( $settings, $profiles, $logger, new Overview( $settings ) ),
 				new MetaBox( $settings, $decision, $builder, $auto ),
 				new PostsList( $settings, $decision, $queue ),
 				new Ajax( $settings, $profiles, $publisher, $sync, $queue, $decision, $builder, $logger ),

@@ -80,6 +80,13 @@ final class SharePlan {
 	public array $warnings;
 
 	/**
+	 * Longest caption the chosen networks accept.
+	 *
+	 * @var int
+	 */
+	public int $caption_limit = 0;
+
+	/**
 	 * Create the plan.
 	 *
 	 * @param array<string, mixed> $payload   API request body.
